@@ -36,7 +36,7 @@ To understand how JavaScript executes:
 - Call Stack → Microtasks (all) → One Macrotask → repeat
 
 ### Key Insight
-- The event loop never interrupts running code; it only schedules callbacks after the call stack becomes empty.
+- The event loop never interrupts running code, it only schedules callbacks after the call stack becomes empty.
 
 -----
 
