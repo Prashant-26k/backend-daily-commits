@@ -16,7 +16,7 @@
 - Day 1: JavaScript Event Loop
 - Day 2: Microtasks vs Macrotasks (Nesting & Priority)
 - Day 3: Closures
-
+- Day 4: `this` and Prototypes
 -----
 
 ## Day 1 : Goal
@@ -82,9 +82,7 @@ To understand how JavaScript executes:
 
 -----
 
-# Day 4 — `this` and Prototypes
-
-## Goal
+# Day 4 : Goal
 - Understand how `this` works in different invocation contexts
 - Learn how JavaScript shares methods using prototypes
 - Compare constructor functions with class syntax
