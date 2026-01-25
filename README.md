@@ -80,4 +80,73 @@ To understand how JavaScript executes:
   closures holding unnecessary references can prevent memory from
   being freed.
 
+-----
+
+# Day 4 — `this` and Prototypes
+
+## Goal
+- Understand how `this` works in different invocation contexts
+- Learn how JavaScript shares methods using prototypes
+- Compare constructor functions with class syntax
+- Explore method borrowing and explicit `this` binding
+
+---
+
+## Concepts Covered
+
+### 1. Constructor Function
+- A normal function becomes a constructor when called using `new`
+- `new` performs:
+  1. Object creation
+  2. Prototype linking
+  3. `this` binding
+  4. Implicit return of the object
+
+---
+
+### 2. Prototype Methods
+- Methods defined on `Function.prototype` are shared
+- Only one function exists in memory
+- Instances delegate method lookup to the prototype
+
+---
+
+### 3. Method Borrowing
+- Methods do not belong to objects — they belong to functions
+- Using `call`, the same method can operate on different objects
+- `this` is injected at call time
+
+---
+
+### 4. `this` Binding Differences
+
+|   Invocation Style       |      `this` value         |
+|--------------------------|---------------------------|
+| Method call (`obj.fn()`) | Object before the dot     |
+| Detached function call   | `undefined` (strict mode) |
+| `call / apply`           | Explicitly provided object|
+| `bind`                   | Permanently bound         |
+
+---
+
+### 5. Class Syntax
+- Classes are syntax sugar over constructor functions
+- Class methods are stored on the prototype
+- Behavior is identical to prototype-based implementation
+
+---
+
+## Key Insight
+JavaScript does not have classical inheritance.
+It uses **prototype delegation**, and `this` is resolved **at runtime based on how a function is called**.
+
+---
+
+## Takeaway
+Understanding prototypes and `this` explains:
+- Method sharing
+- Memory efficiency
+- Why `bind` exists
+- Why classes did not change JavaScript’s core model
+
 
