@@ -5,9 +5,9 @@
 
 ## Rules I Follow
 
-- One meaningful commit per day
-- No commits without running code
-- Explanation written in my own words
+- One meaningful commit per day.
+- No commits without running code.
+- Explanation written in my own words.
 
 -----
 
@@ -17,6 +17,7 @@
 - Day 2: Microtasks vs Macrotasks (Nesting & Priority)
 - Day 3: Closures
 - Day 4: `this` and Prototypes
+- Day 5: Async/Await Error Handling
 -----
 
 ## Day 1 : Goal
@@ -146,5 +147,46 @@ Understanding prototypes and `this` explains:
 - Memory efficiency
 - Why `bind` exists
 - Why classes did not change JavaScript’s core model
+
+-----
+
+# Day 5 : Goal 
+- Understand how async/await handles errors.
+- Learn why try/catch is mandatory with async functions.
+- Observe what happens during an unhandled promise rejection.
+
+---
+
+## Task Overview
+Built a fake asynchronous API that:
+- Randomly succeeds or fails
+- Returns a Promise
+- Is consumed using async/await
+
+---
+
+## What I Implemented
+
+### 1. Fake Async API
+- Uses `Promise`
+- Randomly calls `resolve` or `reject`
+- Simulates a real network request using `setTimeout`
+
+### 2. Handled Error Case
+- Wrapped `await` inside `try/catch`
+- Prevents crashes
+- Gracefully handles failure
+
+```js
+try {
+  const result = await fakeApi();
+} catch (error) {
+  console.error(error.message);
+}
+```
+
+## Key Insight
+- `await` does not handle errors; it converts a rejected Promise into a thrown exception at the await line.
+- If no `try/catch` (or upstream `.catch`) exists, the async function returns a rejected Promise, causing an unhandled rejection.
 
 
