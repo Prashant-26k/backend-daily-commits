@@ -83,7 +83,7 @@ To understand how JavaScript executes:
 
 -----
 
-# Day 4 : Goal
+## Day 4 : Goal
 - Understand how `this` works in different invocation contexts
 - Learn how JavaScript shares methods using prototypes
 - Compare constructor functions with class syntax
@@ -150,7 +150,7 @@ Understanding prototypes and `this` explains:
 
 -----
 
-# Day 5 : Goal 
+## Day 5 : Goal 
 - Understand how async/await handles errors.
 - Learn why try/catch is mandatory with async functions.
 - Observe what happens during an unhandled promise rejection.
