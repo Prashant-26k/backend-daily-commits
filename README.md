@@ -18,6 +18,7 @@
 - Day 3: Closures
 - Day 4: `this` and Prototypes
 - Day 5: Async/Await Error Handling
+- Day 6: Node.js Architecture
 -----
 
 ## Day 1 : Goal
@@ -129,9 +130,9 @@ To understand how JavaScript executes:
 ---
 
 ### 5. Class Syntax
-- Classes are syntax sugar over constructor functions
-- Class methods are stored on the prototype
-- Behavior is identical to prototype-based implementation
+- Classes are syntax sugar over constructor functions.
+- Class methods are stored on the prototype.
+- Behavior is identical to prototype-based implementation.
 
 ---
 
@@ -189,4 +190,67 @@ try {
 - `await` does not handle errors; it converts a rejected Promise into a thrown exception at the await line.
 - If no `try/catch` (or upstream `.catch`) exists, the async function returns a rejected Promise, causing an unhandled rejection.
 
+-----
+
+## Day 6 : Goal
+Understand how Node.js handles concurrency using the event loop and clearly distinguish between blocking and non-blocking operations.
+
+---
+
+## What I Understood
+
+### 1. Top-Level Execution
+- Top-level JavaScript runs immediately on the call stack.
+- Asynchronous APIs register callbacks and hand control to the event loop.
+
+---
+
+### 2. Event Loop Phases
+- **Timers Phase**: Executes `setTimeout` callbacks.
+- **Poll Phase**: Executes completed I/O callbacks (`fs.readFile`).
+- **Check Phase**: Executes `setImmediate` callbacks.
+- Execution order depends on the current event loop phase, not the order of code.
+
+---
+
+### 3. setTimeout vs setImmediate
+- `setTimeout(0)` executes in the timers phase.
+- `setImmediate()` executes in the check phase.
+- Their execution order at top level is not guaranteed.
+
+---
+
+### 4. Non-Blocking I/O
+- `fs.readFile` is asynchronous and offloaded to libuv.
+- The JavaScript thread remains free during file I/O.
+- The callback is queued in the poll phase once I/O completes.
+
+---
+
+### 5. Event Loop Blocking
+- A CPU-heavy JavaScript loop runs on the main thread.
+- While blocked:
+  - Timers do not execute
+  - I/O callbacks are delayed
+  - `setImmediate` callbacks are delayed
+- This blocks the entire Node.js process.
+
+---
+
+### 6. CPU-Intensive but Non-Blocking Work
+- `crypto.pbkdf2` performs CPU-heavy work in the libuv thread pool.
+- It does not block the event loop.
+- Callback execution still depends on event loop availability.
+
+---
+
+### 7. Thread Pool Behavior
+- Node.js uses a fixed-size thread pool (default size: 4).
+- CPU-intensive native tasks run in parallel up to this limit.
+- Extra tasks wait until a worker thread becomes available.
+
+---
+
+## Key Insight
+Node.js is non-blocking by design, but CPU-heavy JavaScript can block the event loop and freeze the application.
 
