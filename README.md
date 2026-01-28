@@ -254,3 +254,46 @@ Understand how Node.js handles concurrency using the event loop and clearly dist
 ## Key Insight
 Node.js is non-blocking by design, but CPU-heavy JavaScript can block the event loop and freeze the application.
 
+-----
+
+## Day 7 : Goal
+- Week 1 Revision.
+
+## What I Understood
+
+### JavaScript Execution Model
+- JavaScript executes code on a single thread using a call stack.
+- Synchronous code is executed first, and asynchronous callbacks are handled by the event loop.
+
+### Event Loop
+- The event loop is a runtime mechanism that checks whether the call stack is empty and decides when queued callbacks can be executed.
+- High priority tasks like `Promises` are placed in the microtask queue.
+- Low priority tasks like `setTimeout` are placed in the macrotask queue and are executed only after all microtasks are completed.
+
+### Closures
+- Closures are functions bundled together with their lexical environment.
+- They allow functions to access variables from their outer scope even after the outer function has finished execution.
+
+### Prototypes
+- Prototypes are objects that are attached to objects when they are created by the JavaScript engine.
+- JavaScript does not have classical inheritance. Instead of copying methods, objects delegate property access through the prototype chain.
+
+### Async/Await and Error Handling
+- Async/await provides a cleaner syntax for handling asynchronous code but must be handled carefully using try/catch blocks.
+- Since `await` throws a rejected Promise as an exception, proper error handling is required.
+
+### Node.js Concurrency Model
+- Although JavaScript runs on a single thread, Node.js achieves concurrency by offloading I/O operations to the environment (libuv).
+- Heavy I/O operations do not block the call stack, but CPU-intensive tasks do.
+
+### Key Differences Between Browser and Node
+- Node.js does not have a render phase.
+- Node.js has additional queues such as `process.nextTick`.
+- Concurrency comes from the event loop and thread pool, not from JavaScript itself.
+
+### What Became Clear This Week
+- Understanding queues and execution priority matters more than memorizing APIs.
+- Delays do not control execution order — queues do.
+
+
+
