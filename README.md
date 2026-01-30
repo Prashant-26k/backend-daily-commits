@@ -8,6 +8,7 @@
 - One meaningful commit per day.
 - No commits without running code.
 - Explanation written in my own words.
+- Every 7th day is reserved for revision; no new code is added on that day.
 
 -----
 
