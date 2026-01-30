@@ -295,5 +295,89 @@ Node.js is non-blocking by design, but CPU-heavy JavaScript can block the event 
 - Understanding queues and execution priority matters more than memorizing APIs.
 - Delays do not control execution order — queues do.
 
+-----
+
+# Day 8 — HTTP Basics, REST Principles & Hello API
+
+## Goal
+- Understand HTTP fundamentals
+- Learn REST principles
+- Build a basic Hello API using Node.js
+
+---
+
+## What I Learned Today
+
+### 1. HTTP Basics
+- HTTP is a stateless request–response protocol.
+- Every HTTP request contains:
+  - Method (GET, POST, PUT, DELETE, etc.)
+  - URL (path + query parameters)
+  - Headers
+  - Optional body
+- Every HTTP response contains:
+  - Status code
+  - Headers
+  - Response body
+
+Important HTTP methods:
+- GET → Fetch data
+- POST → Create data
+- PUT → Replace data
+- PATCH → Update part of data
+- DELETE → Remove data
+
+Important HTTP status codes:
+- 200 → Success
+- 201 → Created
+- 400 → Bad request
+- 404 → Not found
+- 500 → Server error
+
+---
+
+### 2. REST Principles
+- REST is an architectural style, not just JSON over HTTP.
+- REST APIs are:
+  - Stateless (server does not store client state)
+  - Resource-based (use nouns like `/users`, not verbs)
+  - Use HTTP methods correctly
+  - Use proper status codes
+- Each request must contain all required information.
+
+Example:
+- `/hello` → resource
+- `/hello/users/101` → nested resource with path parameter
+
+---
+
+### 3. Hello API
+- Built a simple REST API using Node.js native HTTP module (ES6).
+- Implemented routing manually without any framework.
+- API endpoints:
+
+#### GET /hello
+Response:
+```json
+{
+  "message": "Hello API"
+}
+```
+#### GET /hello?name=Prashant
+Response:
+```json
+{
+  "message": "Hello Prashant"
+}
+```
+
+#### Invalid Route
+Response:
+```json
+{
+  "error": "Not Found"
+}
+```
+
 
 
