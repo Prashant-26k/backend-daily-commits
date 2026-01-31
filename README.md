@@ -20,6 +20,8 @@
 - Day 4: `this` and Prototypes
 - Day 5: Async/Await Error Handling
 - Day 6: Node.js Architecture
+- Day 7: Revision 
+- Day 8: HTTP Basics, REST Principles & Hello API
 -----
 
 ## Day 1 : Goal
@@ -298,9 +300,7 @@ Node.js is non-blocking by design, but CPU-heavy JavaScript can block the event 
 
 -----
 
-# Day 8 — HTTP Basics, REST Principles & Hello API
-
-## Goal
+## Day 8 : Goal
 - Understand HTTP fundamentals
 - Learn REST principles
 - Build a basic Hello API using Node.js
