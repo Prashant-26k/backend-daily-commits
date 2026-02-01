@@ -383,7 +383,7 @@ Response:
 
 -----
 
-# Day 9 : Goal
+## Day 9 : Goal
 - Understand what Middleware is
 - Implement Logging Middleware
 - Implement Authentication Middleware
@@ -432,7 +432,7 @@ Response:
 
 ---
 
-## Key Takeaways
+### Key Takeaways
 - Middleware acts like a checkpoint before business logic.
 - Logging helps debugging and monitoring.
 - Auth middleware is foundation of secure APIs.
