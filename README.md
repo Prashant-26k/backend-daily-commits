@@ -22,6 +22,7 @@
 - Day 6: Node.js Architecture
 - Day 7: Revision 
 - Day 8: HTTP Basics, REST Principles & Hello API
+- Day 9: Express Middleware
 -----
 
 ## Day 1 : Goal
@@ -379,6 +380,79 @@ Response:
   "error": "Not Found"
 }
 ```
+
+-----
+
+# Day 9 : Goal
+- Understand what Middleware is
+- Implement Logging Middleware
+- Implement Authentication Middleware
+- Create a Protected Route
+
+---
+
+## What I Learned
+
+### Middleware
+- Middleware is a function that runs **before the final route handler**.
+- It can:
+  - Log requests
+  - Check authentication
+  - Validate input
+  - Stop request if needed
+- `next()` passes control to the next middleware or route.
+
+---
+
+### Logging Middleware
+- Logs HTTP Method and URL for every request.
+- Applied globally using `app.use()`.
+
+
+---
+
+### Authentication Middleware
+- Checks if `Authorization` header exists.
+- If not present → returns `401 Unauthorized`.
+- If present → calls `next()` and allows access.
+
+---
+
+### Protected Route
+- Only accessible when authorization header is provided.
+- Demonstrates route-level middleware usage.
+
+---
+
+## Key Concepts Understood
+- Difference between global and route middleware
+- Importance of middleware order
+- How `next()` controls request flow
+- Early response stops pipeline
+
+---
+
+## Key Takeaways
+- Middleware acts like a checkpoint before business logic.
+- Logging helps debugging and monitoring.
+- Auth middleware is foundation of secure APIs.
+- Express apps are built using middleware chains.
+
+---
+
+## Example Request Flow
+
+### Public Route (`/`)
+Request → Logger → Route Handler → Response
+
+
+### Protected Route Without Token (`/dashboard`)
+Request → Logger → Auth Middleware → 401 Unauthorized → End
+
+
+### Protected Route With Token (`/dashboard`)
+Request → Logger → Auth Middleware → Route Handler → Response
+
 
 
 
