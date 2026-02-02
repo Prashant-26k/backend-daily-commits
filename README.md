@@ -453,6 +453,63 @@ Request → Logger → Auth Middleware → 401 Unauthorized → End
 ### Protected Route With Token (`/dashboard`)
 Request → Logger → Auth Middleware → Route Handler → Response
 
+-----
 
+## Day 10 : Goal
+- Understand Express Request Lifecycle
+- Implement Central Error Handler
+- Create Custom Error Class
+- Trigger Errors from Routes
 
+---
 
+## What I Learned
+
+### Request Lifecycle
+In an Express application, every request follows a pipeline:
+
+Client → Middleware → Route → Error Handler → Response
+
+- Middleware runs before routes.
+- If an error occurs, Express skips normal flow and directly moves to the error handler.
+
+---
+
+### Custom Error Class
+- Used to create **structured and meaningful errors**.
+- Extends JavaScript’s built-in `Error` class.
+- Allows attaching status codes and additional information.
+
+**Example**
+```js
+new AppError("User not found", 404);
+```
+
+### Central Error Handler
+- A special middleware with four parameters:
+(err, req, res, next)
+- Captures all errors from routes and middleware.
+- Sends consistent JSON responses.
+- Prevents server crashes and repeated try/catch blocks.
+
+### Triggering Errors
+- Errors are forwarded using:
+``` js
+next(error);
+```
+
+- Express immediately stops the normal middleware chain.
+- Control jumps directly to the central error handler.
+
+## Example Flow :
+### Successful Request
+Request → Middleware → Route Handler → Response
+
+### Error Request
+Request → Middleware → Route → next(error) → Error Handler → Response
+
+### Key Takeaways
+- Central error handling avoids repetitive try/catch blocks.
+- Custom errors provide better control and clarity.
+- Error middleware must always be last in the application.
+- Professional APIs handle failures gracefully and consistently.
