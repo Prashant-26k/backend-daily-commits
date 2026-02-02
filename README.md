@@ -23,6 +23,7 @@
 - Day 7: Revision 
 - Day 8: HTTP Basics, REST Principles & Hello API
 - Day 9: Express Middleware
+- Day 10: Request Lifecycle & Centralized Error Handling
 -----
 
 ## Day 1 : Goal
