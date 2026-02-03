@@ -514,3 +514,9 @@ Request → Middleware → Route → next(error) → Error Handler → Response
 - Custom errors provide better control and clarity.
 - Error middleware must always be last in the application.
 - Professional APIs handle failures gracefully and consistently.
+
+-----
+
+## Day 11 : Goal
+- Understand and implement **JWT (JSON Web Token) based authentication** in a backend application.
+ 
