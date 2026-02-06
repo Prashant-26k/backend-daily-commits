@@ -24,6 +24,8 @@
 - Day 8: HTTP Basics, REST Principles & Hello API
 - Day 9: Express Middleware
 - Day 10: Request Lifecycle & Centralized Error Handling
+- Day 11: JWT Authentication (Token vs Session)
+- Day 12: Pagination and Filtering
 -----
 
 ## Day 1 : Goal
@@ -518,5 +520,47 @@ Request → Middleware → Route → next(error) → Error Handler → Response
 -----
 
 ## Day 11 : Goal
-- Understand and implement **JWT (JSON Web Token) based authentication** in a backend application.
+- Understand how authentication works using JSON Web Tokens (JWT)
+and how it differs from session-based authentication.
+
+### What I Implemented
+- Login route that generates a JWT after verifying user credentials.
+- Protected route that only allows access when a valid token is provided.
+- Token expiration handling.
+
+### What I Observed
+- JWT is **stateless**, meaning the server does not store session data.
+- The token itself contains encoded user information and expiration time.
+- Every request must send the token (usually in the Authorization header).
+- If the token expires, access is denied and the user must log in again.
+
+### Token vs Session
+- **JWT:** Stateless, scalable, but token theft risk exists if not handled securely.
+- **Session:** Stateful, server stores session data, easier invalidation but harder to scale.
+
+### Key Takeaway
+JWT improves scalability but requires careful security practices such as
+short expiration time and secure storage.
+
+-----
+
+## Day 12 : Goal
+- Learn how to handle large datasets efficiently using pagination
+and filtering in APIs.
+
+### What I Implemented
+- Endpoint with query parameters like `page` and `limit`.
+- Returned metadata such as total pages and current page.
+
+### What I Observed
+- Pagination prevents sending huge data in a single response.
+- Filtering allows narrowing results based on conditions.
+- Offset-based pagination is simple but can be slow for very large data.
+- Cursor-based pagination is more efficient but slightly complex.
+
+### Key Takeaway
+Efficient APIs do not return all data at once.
+Pagination and filtering improve performance and user experience.
+
+-----
  
