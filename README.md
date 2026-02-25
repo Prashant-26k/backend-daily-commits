@@ -26,6 +26,7 @@
 - Day 10: Request Lifecycle & Centralized Error Handling
 - Day 11: JWT Authentication (Token vs Session)
 - Day 12: Pagination and Filtering
+- Day 13: Input Validation and Security Basics
 -----
 
 ## Day 1 : Goal
@@ -563,4 +564,27 @@ Efficient APIs do not return all data at once.
 Pagination and filtering improve performance and user experience.
 
 -----
- 
+
+## Day 13 : Goal
+Understand why validating user input is important and how to protect backend APIs from common security vulnerabilities.
+
+### What I Implemented
+- Server-side validation for email and password.
+- Rejected malformed or missing request data.
+- Basic sanitization to prevent malicious input.
+- Proper error responses for invalid requests.
+
+### What I Observed
+- Validation must always be done on the server, even if frontend validation exists.
+- Without validation, the application becomes vulnerable to attacks.
+- Trusting user input directly can lead to serious security issues.
+
+### Security Risks Learned
+- SQL Injection (malicious database queries through user input)
+- Cross-Site Scripting (XSS)
+- Weak password validation
+- Exposed authentication tokens
+
+### Key Takeaway
+Never trust user input.
+Security is not a single feature — it is a continuous responsibility in backend development.
