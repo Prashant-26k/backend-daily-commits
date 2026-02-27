@@ -12,21 +12,21 @@
 
 -----
 
-## Progress
+## 📚 Progress (Click to Navigate)
 
-- Day 1: JavaScript Event Loop
-- Day 2: Microtasks vs Macrotasks (Nesting & Priority)
-- Day 3: Closures
-- Day 4: `this` and Prototypes
-- Day 5: Async/Await Error Handling
-- Day 6: Node.js Architecture
-- Day 7: Revision 
-- Day 8: HTTP Basics, REST Principles & Hello API
-- Day 9: Express Middleware
-- Day 10: Request Lifecycle & Centralized Error Handling
-- Day 11: JWT Authentication (Token vs Session)
-- Day 12: Pagination and Filtering
-- Day 13: Input Validation and Security Basics
+- [Day 1 – JavaScript Event Loop](#day-1--goal)
+- [Day 2 – Microtasks vs Macrotasks (Nesting & Priority)](#day-2--goal)
+- [Day 3 – Closures](#day-3--goal)
+- [Day 4 – this and Prototypes](#day-4--goal)
+- [Day 5 – Async/Await Error Handling](#day-5--goal)
+- [Day 6 – Node.js Architecture](#day-6--goal)
+- [Day 7 – Revision](#day-7--goal)
+- [Day 8 – HTTP Basics, REST Principles & Hello API](#day-8--goal)
+- [Day 9 – Express Middleware](#day-9--goal)
+- [Day 10 – Request Lifecycle & Centralized Error Handling](#day-10--goal)
+- [Day 11 – JWT Authentication (Token vs Session)](#day-11--goal)
+- [Day 12 – Pagination and Filtering](#day-12--goal)
+- [Day 13 – Input Validation and Security Basics](#day-13--goal)
 -----
 
 ## Day 1 : Goal
