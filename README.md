@@ -27,6 +27,7 @@
 - [Day 11 – JWT Authentication (Token vs Session)](#day-11--goal)
 - [Day 12 – Pagination and Filtering](#day-12--goal)
 - [Day 13 – Input Validation and Security Basics](#day-13--goal)
+- [Day 14 – Building a Complete REST API](#day-14--goal)
 -----
 
 ## Day 1 : Goal
@@ -588,3 +589,100 @@ Understand why validating user input is important and how to protect backend API
 ### Key Takeaway
 Never trust user input.
 Security is not a single feature — it is a continuous responsibility in backend development.
+
+-----
+
+## Day 14 : Goal
+Build a complete REST API that integrates all concepts learned so far:
+- Modular middleware architecture
+- JWT-based authentication
+- Pagination with metadata
+- Centralized error handling
+- Clean code organization with separated routes
+
+---
+
+## What I Implemented
+
+### 1. Modular Middleware Structure
+- **Logger Middleware**: Logs incoming requests (method and URL).
+- **Auth Middleware**: Validates JWT tokens from Authorization header.
+- **Error Handler**: Catches all errors and sends consistent responses.
+
+### 2. Routes
+- **`POST /register`**: User registration with validation.
+- **`POST /login`**: Authenticates user and returns JWT token.
+- **`GET /item`**: Protected route requiring valid JWT token. Returns paginated items.
+
+### 3. JWT Token Validation
+- Extracts token from `Authorization: Bearer <token>` header.
+- Verifies token signature using `process.env.JWT_SECRET`.
+- Handles expired tokens with appropriate error messages.
+- Rejects invalid or missing tokens with `401 Unauthorized`.
+
+### 4. Pagination Implementation
+- Accepts `page` and `limit` query parameters.
+- Calculates correct offset: `(page - 1) * limit`.
+- Returns metadata along with data:
+  ```json
+  {
+    "metadata": {
+      "totalItems": 95,
+      "totalPages": 10,
+      "currentPage": 1,
+      "limit": 10
+    },
+    "data": [...]
+  }
+  ```
+
+### 5. Error Handling
+- Custom `AppError` class with status codes.
+- Centralized error handler middleware catches all errors.
+- Prevents server crashes from unhandled errors.
+- Sends structured error responses to clients.
+
+---
+
+## Request Flow Example
+
+### Successful Request to Protected Route
+```
+GET /item?page=1&limit=10 with valid token
+↓
+Logger Middleware (logs request)
+↓
+Auth Middleware (validates JWT)
+↓
+Item Handler (processes request)
+↓
+Response with paginated data (200 OK)
+```
+
+### Failed Authentication
+```
+GET /item with missing/invalid token
+↓
+Logger Middleware (logs request)
+↓
+Auth Middleware (detects invalid token)
+↓
+next(new AppError(...))
+↓
+Error Handler (sends 401 response)
+```
+
+---
+
+## What I Observed
+- Middleware order matters: logger should run first, error handler must be last.
+- Separating routes into different files keeps code organized and maintainable.
+- Pagination metadata helps frontend developers understand dataset size without fetching all data.
+- Error handling in routes must always call `next(err)` instead of sending responses directly.
+- JWT tokens allow stateless authentication, making APIs scalable.
+
+---
+
+## Key Takeaway
+A professional API combines multiple concepts: middleware for cross-cutting concerns, authentication for security, pagination for performance, and error handling for reliability.
+Building APIs is not about individual features — it is about how they work together.
